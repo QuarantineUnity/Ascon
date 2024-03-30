@@ -45,6 +45,9 @@ namespace Ascon
                     adapter.SelectCommand = selectdb;
                     adapter.Fill(table);
 
+                    InitialCatalog_comboBox.SelectedIndex = -1;
+                    InitialCatalog_comboBox.Items.Clear();
+
                     for (int i = 0; i < table.Rows.Count; i++)
                     {
                         InitialCatalog_comboBox.Items.Add(table.Rows[i]["name"]);
