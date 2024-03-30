@@ -160,6 +160,8 @@ namespace Ascon
             AddNewObject addNewObject = new AddNewObject();
             addNewObject.ShowDialog();
             refreshTreeView();
+            DataTable table = Query($"SELECT type as 'Тип', product as 'Обозначение' FROM Objects");
+            Objects_dataGrid.DataSource = table;
         }
 
         private void showAttributes_button_Click(object sender, EventArgs e)

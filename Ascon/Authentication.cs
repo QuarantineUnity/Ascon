@@ -203,10 +203,6 @@ namespace Ascon
                         AddDB addDB = new AddDB();
                         addDB.Show();
                     }
-                    else
-                    {
-
-                    }
                 }
             }
             else

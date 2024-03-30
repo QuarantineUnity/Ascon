@@ -22,6 +22,7 @@ namespace Ascon
         {
             if (DBName_textBox.Text != string.Empty)
             {
+                DB.openConnection();
                 DataTable table = new DataTable();
                 SqlDataAdapter adapter = new SqlDataAdapter();
                 SqlCommand selectdb = new SqlCommand($"Select name from Sys.Databases where name = '{DBName_textBox.Text}'", DB.con);

@@ -87,7 +87,7 @@
             // 
             // showObjects_button
             // 
-            this.showObjects_button.Location = new System.Drawing.Point(114, 12);
+            this.showObjects_button.Location = new System.Drawing.Point(12, 12);
             this.showObjects_button.Name = "showObjects_button";
             this.showObjects_button.Size = new System.Drawing.Size(202, 23);
             this.showObjects_button.TabIndex = 1;
@@ -155,7 +155,7 @@
             // 
             // newNode_button
             // 
-            this.newNode_button.Location = new System.Drawing.Point(12, 12);
+            this.newNode_button.Location = new System.Drawing.Point(220, 12);
             this.newNode_button.Name = "newNode_button";
             this.newNode_button.Size = new System.Drawing.Size(96, 23);
             this.newNode_button.TabIndex = 8;
