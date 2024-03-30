@@ -49,62 +49,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddDB.cs">
+    <Compile Include="Forms\AddDB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddDB.Designer.cs">
+    <Compile Include="Forms\AddDB.Designer.cs">
       <DependentUpon>AddDB.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddNewObject.cs">
+    <Compile Include="Forms\AddNewObject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddNewObject.Designer.cs">
+    <Compile Include="Forms\AddNewObject.Designer.cs">
       <DependentUpon>AddNewObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddObject.cs">
+    <Compile Include="Forms\AddObject.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddObject.Designer.cs">
+    <Compile Include="Forms\AddObject.Designer.cs">
       <DependentUpon>AddObject.cs</DependentUpon>
     </Compile>
-    <Compile Include="Attributes.cs">
+    <Compile Include="Forms\Attributes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Attributes.Designer.cs">
+    <Compile Include="Forms\Attributes.Designer.cs">
       <DependentUpon>Attributes.cs</DependentUpon>
     </Compile>
-    <Compile Include="DB.cs" />
-    <Compile Include="Authentication.cs">
+    <Compile Include="Classes\DB.cs" />
+    <Compile Include="Forms\Authentication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Authentication.Designer.cs">
+    <Compile Include="Forms\Authentication.Designer.cs">
       <DependentUpon>Authentication.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExportEntity.cs" />
-    <Compile Include="Main.cs">
+    <Compile Include="Classes\ExportEntity.cs" />
+    <Compile Include="Forms\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Main.Designer.cs">
+    <Compile Include="Forms\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="Classes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddDB.resx">
+    <EmbeddedResource Include="Forms\AddDB.resx">
       <DependentUpon>AddDB.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddNewObject.resx">
+    <EmbeddedResource Include="Forms\AddNewObject.resx">
       <DependentUpon>AddNewObject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddObject.resx">
+    <EmbeddedResource Include="Forms\AddObject.resx">
       <DependentUpon>AddObject.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Attributes.resx">
+    <EmbeddedResource Include="Forms\Attributes.resx">
       <DependentUpon>Attributes.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Authentication.resx">
+    <EmbeddedResource Include="Forms\Authentication.resx">
       <DependentUpon>Authentication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Main.resx">
+    <EmbeddedResource Include="Forms\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
