@@ -47,9 +47,11 @@
             this.attributes_dataGrid.AllowUserToDeleteRows = false;
             this.attributes_dataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.attributes_dataGrid.Location = new System.Drawing.Point(12, 32);
+            this.attributes_dataGrid.MultiSelect = false;
             this.attributes_dataGrid.Name = "attributes_dataGrid";
             this.attributes_dataGrid.ReadOnly = true;
             this.attributes_dataGrid.RowHeadersVisible = false;
+            this.attributes_dataGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.attributes_dataGrid.Size = new System.Drawing.Size(230, 253);
             this.attributes_dataGrid.TabIndex = 0;
             // 
@@ -138,7 +140,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(408, 403);
+            this.ClientSize = new System.Drawing.Size(404, 301);
             this.Controls.Add(this.cancel_Button);
             this.Controls.Add(this.deleteAttribute_button);
             this.Controls.Add(this.Add_button);
