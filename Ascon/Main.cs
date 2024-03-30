@@ -194,34 +194,17 @@ namespace Ascon
             refreshTreeView();
         }
 
-        //private void deleteObjects(int ObjectID)
-        //{
-        //    DB.openConnection();
-        //    using (SqlCommand command1 = new SqlCommand($"SELECT childid FROM Links WHERE parentid = '{ObjectID}'", DB.con))
-        //    {
-        //        using (SqlDataReader reader = command1.ExecuteReader())
-        //        {
-        //            while (reader.Read())
-        //            {
-        //                int childId = reader.GetInt32(0);
-        //                deleteObjects(childId);
-        //            }
-        //        }
-        //    }
-
-        //    SqlCommand command = new SqlCommand($"DELETE FROM Links WHERE parentid = '{ObjectID}' OR childid = '{ObjectID}'", DB.con);
-        //    command.ExecuteNonQuery();
-        //}
-
         private void deleteObjects(string objectProduct)
         {
             DB.openConnection();
             DataTable table = Query($"SELECT id FROM Objects where product = '{objectProduct}'");
             int objectID = Convert.ToInt32(table.Rows[0][0].ToString());
+            DataTable parent_dt = Query($"SELECT * FROM Links where childid = '{objectID}'");
             DataTable isParent_dt = Query($"SELECT * FROM Links where parentid = '{objectID}'");
             if (isParent_dt.Rows.Count != 0)
             {
                 DataTable forDelete_dt = newDeleteObjects(objectID, isParent_dt);
+                forDelete_dt.Merge(parent_dt);
                 for (int i = 0; i < forDelete_dt.Rows.Count; i++)
                 {
                     SqlCommand deleteLink = new SqlCommand($"DELETE FROM Links WHERE parentid = '{forDelete_dt.Rows[i][0]}' AND childid = '{forDelete_dt.Rows[i][1]}'", DB.con);
