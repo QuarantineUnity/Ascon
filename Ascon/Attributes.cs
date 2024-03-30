@@ -38,7 +38,12 @@ namespace Ascon
 
         private void addAttribute_button_Click(object sender, EventArgs e)
         {
-            if (name_textBox.Text != string.Empty || value_textBox.Text != string.Empty)
+            if (name_textBox.Text == string.Empty || value_textBox.Text == string.Empty)
+            {
+                
+                MessageBox.Show("Введите все поля");
+            }
+            else
             {
                 DB.openConnection();
                 DataTable table = new DataTable();
@@ -61,10 +66,6 @@ namespace Ascon
                 {
                     MessageBox.Show("Данный атрибут уже существует");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Введите все поля");
             }
         }
 

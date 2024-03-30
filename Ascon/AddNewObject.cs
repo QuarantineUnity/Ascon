@@ -20,7 +20,12 @@ namespace Ascon
 
         private void addNewObject_button_Click(object sender, EventArgs e)
         {
-            if (type_textBox.Text != string.Empty || product_textBox.Text != string.Empty)
+            if (type_textBox.Text == string.Empty || product_textBox.Text == string.Empty)
+            {
+                
+                MessageBox.Show("Заполните все поля");
+            }
+            else
             {
                 DB.openConnection();
                 DataTable table = new DataTable();
@@ -40,10 +45,6 @@ namespace Ascon
                 {
                     MessageBox.Show("Объект с таким названием уже существует");
                 }
-            }
-            else
-            {
-                MessageBox.Show("Заполните все поля");
             }
         }
     }
