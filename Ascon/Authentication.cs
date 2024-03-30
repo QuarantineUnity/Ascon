@@ -81,7 +81,7 @@ namespace Ascon
             }
             else
             {
-                MessageBox.Show("Enter all the fields!");
+                MessageBox.Show("Введите все поля!");
             }
         }
 
@@ -168,24 +168,42 @@ namespace Ascon
         private void InitialCatalog_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             EnableControl();
+            if (DB.conString.Contains("Initial Catalog"))
+            {
+                DB.conString = DB.conString.Substring(0, DB.conString.IndexOf("Initial Catalog"));
+                DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+            }
+            else
+            {
+                DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+            }
         }
 
         private void OpenProgram_button_Click(object sender, EventArgs e)
         {
             Main main = new Main();
-
+            DB.ConnectToDatabase();
+            DB.openConnection();
             DataTable table = new DataTable();
             SqlDataAdapter adapter = new SqlDataAdapter();
             SqlCommand selecttable_attributes = new SqlCommand($"SELECT table_name FROM INFORMATION_SCHEMA.TABLES where table_name = 'Attributes' or table_name = 'Objects' or table_name = 'Links';", DB.con);
             adapter.SelectCommand = selecttable_attributes;
             adapter.Fill(table);
-            if (table.Rows.Count != 3)
+            if (table.Rows.Count < 3)
             {
                 DialogResult result = MessageBox.Show("В базе данных не хватает нужных таблиц. Добавить?", "Подтверждение", MessageBoxButtons.YesNo);
 
                 if (result == DialogResult.Yes)
                 {
-                    DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+                    if (DB.conString.Contains("Initial Catalog"))
+                    {
+                        DB.conString = DB.conString.Substring(0, DB.conString.IndexOf("Initial Catalog"));
+                        DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+                    }
+                    else
+                    {
+                        DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+                    }
                     DB.ConnectToDatabase();
                     DB.openConnection();
                     SqlCommand addTables = new SqlCommand($"IF NOT EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES where table_name = 'Objects') begin\r\nCREATE TABLE Objects(\r\n    [id] INT NOT NULL IDENTITY(0, 1) PRIMARY KEY,\r\n    [type] NVARCHAR(255) NOT NULL,\r\n    [product] NVARCHAR(255) NOT NULL\r\n);\r\nend\r\nIF NOT EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES where table_name = 'Links') begin\r\nCREATE TABLE Links(\r\n    [parentId] INT NOT NULL FOREIGN KEY REFERENCES Objects(id),\r\n    [childId] INT NOT NULL FOREIGN KEY REFERENCES Objects(id),\r\n);\r\nend\r\nIF NOT EXISTS (SELECT table_name FROM INFORMATION_SCHEMA.TABLES where table_name = 'Attributes') begin\r\nCREATE TABLE Attributes(\r\n    [objectId] INT NOT NULL FOREIGN KEY REFERENCES Objects(id),\r\n    [name] NVARCHAR(255) NOT NULL,\r\n    [value] NVARCHAR(255) NOT NULL,\r\n    CONSTRAINT PK_Attributes PRIMARY KEY ([objectId], [name])\r\n);\r\nend", DB.con);
@@ -202,12 +220,21 @@ namespace Ascon
                     {
                         AddDB addDB = new AddDB();
                         addDB.Show();
+                        this.Hide();
                     }
                 }
             }
             else
             {
-                DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+                if (DB.conString.Contains("Initial Catalog"))
+                {
+                    DB.conString = DB.conString.Substring(0, DB.conString.IndexOf("Initial Catalog"));
+                    DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+                }
+                else
+                {
+                    DB.conString = DB.conString + $"Initial Catalog = {InitialCatalog_comboBox.Text};";
+                }
                 DB.ConnectToDatabase();
                 main.Show();
                 this.Hide();

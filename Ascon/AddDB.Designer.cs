@@ -73,6 +73,7 @@
             this.Name = "AddDB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Новая база данных";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AddDB_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
